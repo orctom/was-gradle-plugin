@@ -1,0 +1,28 @@
+group 'com.orctom.gradle.plugins.was'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'idea'
+//apply plugin: 'java-gradle-plugin'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.orctom.was:was-util:1.0-SNAPSHOT'
+    testCompile 'junit:junit:4.12'
+}
+
+idea {
+    module {
+        downloadSources = true
+    }
+}
