@@ -7,12 +7,13 @@ import org.gradle.api.tasks.TaskAction
 
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class WASDeployTask extends AbstractWASTask {
 
     @TaskAction
     void start() {
-        getLogger().info(Constants.PLUGIN_ID + " - deploy");
+        println Constants.PLUGIN_ID + " - deploy"
         Set<WebSphereModel> models = getWebSphereModels()
         if (null == models || models.isEmpty()) {
             println '[SKIPPED DEPLOYMENT] empty target server configured, please check your configuration'
@@ -20,7 +21,6 @@ class WASDeployTask extends AbstractWASTask {
         }
 
         final def workingDir = "${project.buildDir}/was-gradle-plugin/py/"
-
         if (models.size() > 1) {
             int numOfProcessors = Runtime.getRuntime().availableProcessors()
             int poolSize = models.size() > numOfProcessors ? numOfProcessors : models.size()
@@ -33,6 +33,13 @@ class WASDeployTask extends AbstractWASTask {
                     }
                 })
             }
+
+            executor.shutdown()
+            try {
+                executor.awaitTermination(20, TimeUnit.MINUTES)
+            } catch (InterruptedException e) {
+                e.printStackTrace()
+            }
         } else {
             execute(models.first(), workingDir)
         }
@@ -40,14 +47,14 @@ class WASDeployTask extends AbstractWASTask {
 
     void execute(WebSphereModel model, String workingDir) {
         try {
-            getLogger().info('======================    deploy    ========================')
+            println '======================    deploy    ========================'
             new WebSphereServiceImpl(model, workingDir, project).deploy()
         } catch (Throwable t) {
             if (model.failOnError) {
                 throw new WebSphereServiceException(t);
             } else {
-                getLogger().error("##############  Exception occurred during deploying to WebSphere  ###############");
-                getLogger().error(Throwables.getStackTraceAsString(t));
+                System.err.println("##############  Exception occurred during deploying to WebSphere  ###############")
+                System.err.println(Throwables.getStackTraceAsString(t))
             }
         }
     }
