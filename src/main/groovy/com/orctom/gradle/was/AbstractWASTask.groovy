@@ -6,7 +6,6 @@ import com.google.common.collect.Sets
 import com.orctom.was.model.WebSphereModel
 import com.orctom.was.utils.PropertiesUtils
 import org.gradle.api.DefaultTask
-import org.gradle.api.Task
 import org.gradle.api.tasks.bundling.Zip
 
 /**
@@ -33,7 +32,7 @@ class AbstractWASTask extends DefaultTask {
     boolean parentLast = false
     boolean restartAfterDeploy = true
     boolean webModuleParentLast = false
-    String deploymentsPropertyFile = "${project.path}/was-gradle-plugin.properties"
+    String deploymentsPropertyFile = "${project.projectDir.path}/was-gradle-plugin.properties"
     String packageFile
     String script
     String scriptArgs
@@ -42,18 +41,8 @@ class AbstractWASTask extends DefaultTask {
     boolean failOnError = false
     boolean verbose = false
 
-    @Override
-    Task configure(Closure closure) {
-        if (Strings.isNullOrEmpty(applicationName)) {
-            applicationName = "${project.name}-${project.version.toString()}"
-        }
-        if (Strings.isNullOrEmpty(packageFile)) {
-            packageFile = getPackageFilePath()
-        }
-        return super.configure(closure)
-    }
-
     protected Set<WebSphereModel> getWebSphereModels() {
+        setDefaultValues()
         String deployTargets = System.getProperty(Constants.KEY_DEPLOY_TARGETS)
 
         if (!Strings.isNullOrEmpty(deployTargets)) {
@@ -82,6 +71,15 @@ class AbstractWASTask extends DefaultTask {
             }
             println "Single target: ${model.host}"
             return Sets.newHashSet(model)
+        }
+    }
+
+    protected void setDefaultValues() {
+        if (Strings.isNullOrEmpty(applicationName)) {
+            applicationName = "${project.name}-${project.version.toString()}"
+        }
+        if (Strings.isNullOrEmpty(packageFile)) {
+            packageFile = getPackageFilePath()
         }
     }
 
