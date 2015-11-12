@@ -25,7 +25,7 @@ class WebSphereServiceImpl extends AbstractWebSphereServiceImpl {
         ExecResult result = project.exec { ExecSpec exec ->
             exec.executable = command.executable
             exec.workingDir = command.workingDir
-            exec.args = args = command.argsAsList
+            exec.args = command.argsAsList
             exec.standardInput = System.in
             exec.standardOutput = System.out
             exec.errorOutput = System.out

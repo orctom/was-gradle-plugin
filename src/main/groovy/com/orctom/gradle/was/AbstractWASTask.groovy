@@ -81,6 +81,9 @@ class AbstractWASTask extends DefaultTask {
         if (Strings.isNullOrEmpty(packageFile)) {
             packageFile = getPackageFilePath()
         }
+        if (!Strings.isNullOrEmpty(cluster)) {
+            port = '8879'
+        }
     }
 
     protected WebSphereModel getWebSphereModel() {
