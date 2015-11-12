@@ -1,6 +1,9 @@
 plugins {
     id "com.gradle.plugin-publish" version "0.9.1"
 }
+plugins {
+    id 'net.researchgate.release' version '2.3.4'
+}
 
 group 'com.orctom.gradle.was'
 version '1.0-SNAPSHOT'
