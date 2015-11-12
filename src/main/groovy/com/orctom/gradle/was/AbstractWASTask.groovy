@@ -183,7 +183,7 @@ class AbstractWASTask extends DefaultTask {
             value = PropertiesUtils.resolve(value, props)
             props.setProperty(propertyName, value)
         }
-        return value
+        return value.trim()
     }
 
     private isValueNotResolved = { String value ->
@@ -237,7 +237,7 @@ class AbstractWASTask extends DefaultTask {
 
     private static void setProperty(Properties properties, String key, String value) {
         if (!Strings.isNullOrEmpty(value)) {
-            properties.setProperty(key, value)
+            properties.setProperty(key, value.trim())
         }
     }
 
