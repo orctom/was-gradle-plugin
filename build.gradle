@@ -1,10 +1,13 @@
-group 'com.orctom.gradle.plugins.was'
+plugins {
+    id "com.gradle.plugin-publish" version "0.9.1"
+}
+
+group 'com.orctom.gradle.was'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
 apply plugin: 'maven'
 apply plugin: 'idea'
-//apply plugin: 'java-gradle-plugin'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -17,12 +20,27 @@ repositories {
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile 'com.orctom.was:was-util:1.0-SNAPSHOT'
+    compile 'com.orctom.was:was-util:1.0'
     testCompile 'junit:junit:4.12'
 }
 
 idea {
     module {
         downloadSources = true
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/orctom/was-gradle-plugin'
+    vcsUrl = 'https://github.com/orctom/was-gradle-plugin'
+
+    description = 'Deploy artifact to one or more, local or remote WebSphere Application Server'
+    tags = ['websphere', 'was']
+
+    plugins {
+        wasPlugin {
+            id = 'com.orctom.was'
+            displayName = 'WAS (WabSphere) Deploy Plugin'
+        }
     }
 }
