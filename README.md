@@ -85,13 +85,12 @@ plugins {
 ### Single Target Server
 ```groovy
 was {
-	wasHome = ${env.WAS_HOME}
-	applicationName = ${project.build.finalName}
-	host = localhost
-	server = server01
-	node = node01
-	virtualHost = default_host
-	verbose = true
+	applicationName = 'my-app-name'
+	host = 'localhost'
+	server = 'server01'
+	node = 'node01'
+	virtualHost = 'default_host'
+	verbose = 'true'
 }
 ```
 
@@ -131,11 +130,11 @@ virtualHost=devtrunk3_host
 
 **Deploy to `dev-trunk1` and `dev-trunk2`**
 ```
-gradle was -Ddeploy_targets=`dev-trunk1`,`dev-trunk2`
+gradle was -Ddeploy_targets=dev-trunk1,dev-trunk2
 ```
 **Deploy to `dev-trunk2` and `dev-trunk3`**
 ```
-gradle was -Ddeploy_targets=`dev-trunk2`,`dev-trunk3`
+gradle was -Ddeploy_targets=dev-trunk2,dev-trunk3
 ```
 
 ## Customized Jython Script File
