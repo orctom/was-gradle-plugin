@@ -24,7 +24,7 @@ Tested on WAS 8.5
 | Name						| Type		| Description																								    |
 | ------------------------- | --------- | ------------------------------------------------------------------------------------------------------------- |
 | **wasHome**				| String	| WebSphere Application Server home. Default: `${env.WAS_HOME}`, **required**								    |
-| **applicationName**		| String	| Application name displayed in admin console. Default: `${project.build.finalName}`						    |
+| **applicationName**		| String	| Application name displayed in admin console. Default: `${project.name}`				            		    |
 | applicationNameSuffix		| String	| Will be appended to applicationName, as `applicationName_applicationNameSuffix`, **property file only** 	    |
 | host						| String	| Local/Remote WAS IP/domain URL. e.g. `10.95.0.100`, `devtrunk01.company.com`, default: `localhost`   		    |
 | port						| String	| Default: `8879` (when `cluster` not empty); `8880` (when `cluster` empty)									    |
@@ -42,7 +42,7 @@ Tested on WAS 8.5
 | parentLast				| Boolean	| `true` to set classloader mode of application to `PARENT_LAST`, default `false`							    |
 | restartAfterDeploy		| Boolean	| `true` to restart server after deploy, `false` to start application directly. Default `true`				    |
 | webModuleParentLast		| Boolean	| `true` to set classloader mode of web module to `PARENT_LAST`, default `false`							    |
-| **packageFile**			| String	| The EAR/WAR package that will be deployed to remote RAS, Default: `${project.artifact.file}`				    |
+| **packageFile**			| String	| The EAR/WAR package that will be deployed to remote RAS, Default value is been calculated.	    		    |
 | **failOnError**			| Boolean	| Default: `false` Whether failed the build when failed to deploy.                          				    |
 | **verbose**				| Boolean	| Whether show more detailed info in log																	    |
 | **script**				| String	| Your own jython script for deployment. Double braces for variables, such as: `{{cluster}}`                    |
@@ -152,11 +152,11 @@ We could move this plugin to a profile, and utilize [Extended Choice Parameter p
 #### Sample Jenkins Job Configuration
 **Configure**
 
-![Jenkins Job configure](https://raw.github.com/orctom/was-gradle-plugin/master/screenshots/configure.png "Jenkins Job Configure")
+![Jenkins Job configure](https://raw.github.com/orctom/was-maven-plugin/master/screenshots/configure.png "Jenkins Job Configure")
 
 **Trigger**
 
-![Jenkins Job Trigger](https://raw.github.com/orctom/was-gradle-plugin/master/screenshots/trigger.png "Jenkins Job Trigger")
+![Jenkins Job Trigger](https://raw.github.com/orctom/was-maven-plugin/master/screenshots/trigger.png "Jenkins Job Trigger")
 
 ## With Global Security Turned on
 When Global Security is enabled on remote WAS (not under a same deployment manager), certificates of remote WAS need to be added to local trust store. 
@@ -174,5 +174,4 @@ We could configure WAS to prompt to add them to local trust store.
 * Web servers support, use `webservers` to specify the web server(s) that you want to bind. (but you still have to 'update web server plug-in configuration' by your self.)
 * Added parameter `deployOptions`, expecting space-separated options such as `-precompileJSPs -deployws`, which will be prepended in the deployment options.
 * Fixed issue about `failOnError`.
-* Extract some common code including `websphere.py` to [was-util](https://github.com/orctom/was-util), which is also been used by [was-gradle-plugin](https://github.com/orctom/was-gradle-plugin)
 
