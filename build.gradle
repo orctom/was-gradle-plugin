@@ -6,7 +6,6 @@ plugins {
 }
 
 group 'com.orctom.gradle.was'
-version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
 apply plugin: 'maven'
