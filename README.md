@@ -2,6 +2,8 @@
 
 **This plugin is the gradle version of [was-maven-plugin](https://github.com/orctom/was-maven-plugin)**
 
+[Plugin Page on Gradle Plugin Portal](https://plugins.gradle.org/plugin/com.orctom.was)
+
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -68,7 +70,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "gradle.plugin.com.orctom.gradle.was:was-gradle-plugin:1.0"
+		classpath "gradle.plugin.com.orctom.gradle.was:was-gradle-plugin:1.1"
 	}
 }
 
@@ -78,7 +80,7 @@ apply plugin: "com.orctom.was"
 ### Gradle 2.1 or newer
 ```groovy
 plugins {
-	id "com.orctom.was" version "1.0"
+	id "com.orctom.was" version "1.1"
 }
 ```
 
