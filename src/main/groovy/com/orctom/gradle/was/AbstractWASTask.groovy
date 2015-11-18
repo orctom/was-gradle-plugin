@@ -183,7 +183,7 @@ class AbstractWASTask extends DefaultTask {
             value = PropertiesUtils.resolve(value, props)
             props.setProperty(propertyName, value)
         }
-        return value.trim()
+        return value ? value.trim() : value
     }
 
     private isValueNotResolved = { String value ->
