@@ -20,7 +20,7 @@ class WASDeployTask extends AbstractWASTask {
             return
         }
 
-        final def workingDir = "${project.buildDir}/was-gradle-plugin/py/"
+        final def workingDir = "${project.buildDir}${File.separator}was-gradle-plugin${File.separator}py${File.separator}"
         if (models.size() > 1) {
             int numOfProcessors = Runtime.getRuntime().availableProcessors()
             int poolSize = models.size() > numOfProcessors ? numOfProcessors : models.size()

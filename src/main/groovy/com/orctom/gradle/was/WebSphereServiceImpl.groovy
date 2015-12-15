@@ -22,6 +22,7 @@ class WebSphereServiceImpl extends AbstractWebSphereServiceImpl {
 
     @Override
     protected void executeCommand(Command command) {
+		println command.toString()
         ExecResult result = project.exec { ExecSpec exec ->
             exec.executable = command.executable
             exec.workingDir = command.workingDir
