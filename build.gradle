@@ -22,7 +22,7 @@ repositories {
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile 'com.orctom.was:was-util:1.1.2'
+    compile 'com.orctom.was:was-util:1.1.3'
     testCompile 'junit:junit:4.12'
 }
 
