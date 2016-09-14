@@ -13,26 +13,26 @@ import org.gradle.process.ExecSpec
  */
 class WebSphereServiceImpl extends AbstractWebSphereServiceImpl {
 
-    private Project project
+  private Project project
 
-    WebSphereServiceImpl(WebSphereModel model, String workingDir, Project project) {
-        super(model, workingDir)
-        this.project = project
-    }
+  WebSphereServiceImpl(WebSphereModel model, String workingDir, Project project) {
+    super(model, workingDir)
+    this.project = project
+  }
 
-    @Override
-    protected void executeCommand(Command command) {
-		println command.toString()
-        ExecResult result = project.exec { ExecSpec exec ->
-            exec.executable = command.executable
-            exec.workingDir = command.workingDir
-            exec.args = command.argsAsList
-            exec.standardInput = System.in
-            exec.standardOutput = System.out
-            exec.errorOutput = System.out
-        }
-        if (result.exitValue != 0) {
-            new RuntimeException("Failed to execute, recturn code ${exitVal}")
-        }
+  @Override
+  protected void executeCommand(Command command) {
+    println command.toString()
+    ExecResult result = project.exec { ExecSpec exec ->
+      exec.executable = command.executable
+      exec.workingDir = command.workingDir
+      exec.args = command.argsAsList
+      exec.standardInput = System.in
+      exec.standardOutput = System.out
+      exec.errorOutput = System.out
     }
+    if (result.exitValue != 0) {
+      new RuntimeException("Failed to execute, recturn code ${exitVal}")
+    }
+  }
 }

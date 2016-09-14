@@ -5,8 +5,8 @@ import org.gradle.api.Project
 
 class WASPlugin implements Plugin<Project> {
 
-    @Override
-    void apply(Project project) {
-        project.task('was', type: WASDeployTask)
-    }
+  @Override
+  void apply(Project project) {
+    project.task('was', type: WASDeployTask)
+  }
 }

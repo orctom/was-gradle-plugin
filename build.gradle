@@ -1,8 +1,8 @@
 plugins {
-    id "com.gradle.plugin-publish" version "0.9.1"
+  id "com.gradle.plugin-publish" version "0.9.1"
 }
 plugins {
-    id 'net.researchgate.release' version '2.3.4'
+  id 'net.researchgate.release' version '2.3.4'
 }
 
 group 'com.orctom.gradle.was'
@@ -15,34 +15,34 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 repositories {
-    mavenLocal()
-    mavenCentral()
+  mavenLocal()
+  mavenCentral()
 }
 
 dependencies {
-    compile gradleApi()
-    compile localGroovy()
-    compile 'com.orctom.was:was-util:1.1.3.1'
-    testCompile 'junit:junit:4.12'
+  compile gradleApi()
+  compile localGroovy()
+  compile 'com.orctom.was:was-util:1.1.3.2'
+  testCompile 'junit:junit:4.12'
 }
 
 idea {
-    module {
-        downloadSources = true
-    }
+  module {
+    downloadSources = true
+  }
 }
 
 pluginBundle {
-    website = 'https://github.com/orctom/was-gradle-plugin'
-    vcsUrl = 'https://github.com/orctom/was-gradle-plugin'
+  website = 'https://github.com/orctom/was-gradle-plugin'
+  vcsUrl = 'https://github.com/orctom/was-gradle-plugin'
 
-    description = 'Deploy artifact to one or more, local or remote WebSphere Application Server'
-    tags = ['websphere', 'was']
+  description = 'Deploy artifact to one or more, local or remote WebSphere Application Server'
+  tags = ['websphere', 'was']
 
-    plugins {
-        wasPlugin {
-            id = 'com.orctom.was'
-            displayName = 'WAS (WabSphere) Deploy Plugin'
-        }
+  plugins {
+    wasPlugin {
+      id = 'com.orctom.was'
+      displayName = 'WAS (WabSphere) Deploy Plugin'
     }
+  }
 }
