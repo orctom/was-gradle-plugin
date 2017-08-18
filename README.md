@@ -2,7 +2,7 @@
 
 **This plugin is the gradle version of [was-maven-plugin](https://github.com/orctom/was-maven-plugin)**
 
-[Plugin Page on Gradle Plugin Portal](https://plugins.gradle.org/plugin/com.orctom.was)
+[Plugin Page on Gradle Plugin Portal](https://plugins.gradle.org/plugin/com.orctom.was/1.1.3.2)
 
 - [Introduction](#introduction)
 - [Installation](#installation)
