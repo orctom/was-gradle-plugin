@@ -1,3 +1,5 @@
+# *was-gradle-plugin* is looking for new maintainer
+
 # was-gradle-plugin [![Build Status](https://api.travis-ci.org/orctom/was-gradle-plugin.png)](https://travis-ci.org/orctom/was-gradle-plugin)
 
 **This plugin is the gradle version of [was-maven-plugin](https://github.com/orctom/was-maven-plugin)**
